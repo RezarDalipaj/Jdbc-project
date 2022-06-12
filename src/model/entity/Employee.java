@@ -16,6 +16,8 @@ public class Employee {
 
     private String jobTitle;
 
+    private Integer reportsTo;
+
     public Integer getId() {
         return id;
     }
@@ -70,5 +72,27 @@ public class Employee {
 
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
+    }
+
+    public void setReportsTo(Integer reportsTo) {
+        this.reportsTo = reportsTo;
+    }
+
+    public Integer getReportsTo() {
+        return reportsTo;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", extension='" + extension + '\'' +
+                ", email='" + email + '\'' +
+                ", officeCode='" + officeCode + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", reportsTo=" + reportsTo +
+                '}';
     }
 }

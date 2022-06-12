@@ -16,6 +16,7 @@ public class EmployeeMapper extends Mapper<Employee> {
         employee.setExtension(result.getString("extension"));
         employee.setEmail(result.getString("email"));
         employee.setOfficeCode(result.getString("officeCode"));
+        employee.setReportsTo(result.getInt("reportsTo"));
         employee.setJobTitle(result.getString("jobTitle"));
         return employee;
     }
