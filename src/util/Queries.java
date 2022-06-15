@@ -43,4 +43,6 @@ public final class Queries {
     public static final String ADD_OFFICE = "INSERT INTO offices VALUES(?,?,?,?,?,?,?,?,?);";
 
     public static final String UPDATE_OFFICE ="UPDATE offices SET city = ?, phone = ?, addressLine1=?, addressLine2 = ?, state = ?, country = ?, postalCode = ?, territory = ? WHERE officeCode = ?;";
+
+    public static final String JOIN = "SELECT * FROM customers LEFT JOIN orders USING(customerNumber);";
 }

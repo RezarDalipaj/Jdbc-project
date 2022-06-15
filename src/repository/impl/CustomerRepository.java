@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class CustomerRepository extends BaseRepository<Customer, Integer>{
 
@@ -159,5 +160,41 @@ public class CustomerRepository extends BaseRepository<Customer, Integer>{
             System.out.println("Couldnt update. Customer not found\nRows affected: "+rows);
         }
         return rows;
+    }
+    public Boolean join(){
+        List<Customer> customerss = new ArrayList<>();
+        try (Connection connection = JdbcConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(Queries.JOIN)) {
+            ResultSet result = statement.executeQuery();
+            while (result.next()){
+                String cname = result.getString("customerName");
+                int oNr = result.getInt("orderNumber");
+                Customer c = new Customer();
+                Order o = new Order();
+                o.setOrderNumber(oNr);
+                int check = 0;
+                for (Customer cust : customerss) {
+                    if(cust.getCustomerName().equalsIgnoreCase(cname)){
+                        check = 1;
+                        break;
+                    }
+                }
+                if (check == 1){
+                    System.out.println(o.getOrderNumber());
+                }
+                else {
+                    c.setCustomerName(cname);
+                    customerss.add(c);
+                    System.out.println("----------------------------------");
+                    System.out.println("Customer " + c.getCustomerName());
+                    System.out.println("Orders:\n"+o.getOrderNumber());
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
+        return true;
     }
 }

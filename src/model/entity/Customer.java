@@ -1,6 +1,10 @@
 package model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
+    private List<Order> orders = new ArrayList<>();
     private Integer customerNumber;
     private String customerName;
     private String contactLastName;
@@ -136,5 +140,13 @@ public class Customer {
                 ", salesRepEmployeeNumber=" + salesRepEmployeeNumber +
                 ", creditLimit=" + creditLimit +
                 '}';
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }

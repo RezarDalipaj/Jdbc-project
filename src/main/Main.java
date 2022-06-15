@@ -122,7 +122,7 @@ public class Main {
         Boolean rows = employees.save(e1);
         System.out.println("\nAdding office\n");
         Office off1 = new Office();
-        off1.setId(11);
+        off1.setId(12);
         off1.setCity("Lezhe");
         off1.setCountry("Albania");
         off1.setState("AL");
@@ -282,5 +282,7 @@ public class Main {
         for (Order o: ords) {
             System.out.println(o.toString());
         }
+        System.out.println("\nJoined customers and orders:\n");
+        Boolean join = customers.join();
     }
 }
